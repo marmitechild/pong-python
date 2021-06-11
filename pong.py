@@ -35,8 +35,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0,0)
-ball.dx=0.5
-ball.dy=0.5
+ball.dx = 0.5
+ball.dy = -0.5
 
 # function
 def paddle_a_up():
@@ -59,27 +59,6 @@ def paddle_b_down():
     y=y-20
     paddle_b.sety(y)
 
-
-# function FOR BALL
-def ball_up():
-    y=ball.ycor()
-    y=y+20
-    ball.sety(y)
-
-def ball_down():
-    y=ball.ycor()
-    y=y-20
-    ball.sety(y)
-
-def ball_right():
-    x=ball.xcor()
-    x=x+20
-    ball.setx(x)
-
-def ball_left():
-    x=ball.xcor()
-    x=x-20
-    ball.setx(x)
 # keyboard binding
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
@@ -87,20 +66,49 @@ wn.onkeypress(paddle_a_down, "s")
 wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
 
-# BALL MOVEMENT
-wn.onkeypress(ball_down, "y")
-wn.onkeypress(ball_up, "g")
-wn.onkeypress(ball_right, "h")
-wn.onkeypress(ball_left, "j")
-
-
+# Main game loop
 while True: 
     wn.update()
-    # ball.setx(ball.xcor() + ball.dx)
-    # ball.sety(ball.ycor() + ball.dy) 
 
+    # Move ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
 
+    # Border checking
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy = -1 * ball.dy
 
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy = -1 * ball.dy
+
+# function FOR BALL
+# def ball_up():
+#     y=ball.ycor()
+#     y=y+20
+#     ball.sety(y)
+
+# def ball_down():
+#     y=ball.ycor()
+#     y=y-20
+#     ball.sety(y)
+
+# def ball_right():
+#     x=ball.xcor()
+#     x=x+20
+#     ball.setx(x)
+
+# def ball_left():
+#     x=ball.xcor()
+#     x=x-20
+#     ball.setx(x)
+
+# BALL MOVEMENT
+# wn.onkeypress(ball_down, "y")
+# wn.onkeypress(ball_up, "g")
+# wn.onkeypress(ball_right, "h")
+# wn.onkeypress(ball_left, "j")
 
 
 
