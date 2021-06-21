@@ -83,6 +83,20 @@ while True:
         ball.sety(-290)
         ball.dy = -1 * ball.dy
 
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+    
+
+
+
+
+
+
 # function FOR BALL
 # def ball_up():
 #     y=ball.ycor()
